@@ -1,7 +1,7 @@
 # Личный проект «Код и Магия» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Светлана Мальцева](https://up.htmlacademy.ru/javascript/6/user/88410).
-* Наставник: `Неизвестно`.
+* Наставник: [Андрей Градусов](https://htmlacademy.ru/profile/id182375).
 
 ---
 
