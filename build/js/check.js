@@ -21,7 +21,7 @@ function getMessage (a, b) {
     if (typeof (a) === 'boolean') {
 
       if (a) {
-        return ('Я попал в' + b);
+        return ('Я попал в ' + b);
     } // если а true
       else  {
         return ('Я никуда не попал');
