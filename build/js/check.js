@@ -6,7 +6,7 @@ function getMessage (a, b) {
     function calculatePath (a, b) {
       var sum = 0;
       for (var i = 0; i < a.length; i++) {
-        sum = sum + a[i] + b[i];
+        sum = sum + (a[i] * b[i]);
       }
       return sum;
     }
@@ -18,7 +18,7 @@ function getMessage (a, b) {
       return sum;
     }
     if (typeof (a) === 'boolean') {
-    
+
       if (a) {
         return ('Я попал в b');
     } // если а true
