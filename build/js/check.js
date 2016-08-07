@@ -2,7 +2,14 @@
 
 function getMessage (a, b) {
     var numberOfSteps;
-
+    var distancePath;
+    function calculatePath (arr2) {
+      var sum = 0;
+      for (var i = 0; i < arr2.length; i++) {
+        var sum = arr2.reduce((a, b) => a + (+b || 0), 0);
+      }
+      return sum;
+    }
     function summOfArray (arr) {
       var sum = 0;
       for (var i = 0; i < arr.length; i++) {
@@ -11,10 +18,10 @@ function getMessage (a, b) {
       return sum;
     }
     if (typeof (a) === 'boolean') {
-      var a = true;
+      var a = true
       if (a) {
         return ('Я попал в b');
-    } // если а true 
+    } // если а true
       else  {
         return ('Я никуда не попал');
     } // если a false
@@ -22,7 +29,7 @@ function getMessage (a, b) {
     if (typeof (a) === 'number') {
       return ('Я прыгнул на ' + a * 100 + ' сантиметров')
   }
-    if (Array.isArray(a)) {
+    if (Array.isArray(a) && !Array.isArray(b)) {
       numberOfSteps = summOfArray(a);
       return 'Я прошёл '+ numberOfSteps +' шагов';
 }
