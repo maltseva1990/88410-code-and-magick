@@ -3,10 +3,10 @@
 function getMessage (a, b) {
     var numberOfSteps;
     var distancePath;
-    function calculatePath (arr2) {
+    function calculatePath (a, b) {
       var sum = 0;
-      for (var i = 0; i < arr2.length; i++) {
-        var sum = arr2.reduce((a, b) => a + (+b || 0), 0);
+      for (var i = 0; i < a.length; i++) {
+        sum = sum + a[i] + b[i];
       }
       return sum;
     }
@@ -18,7 +18,7 @@ function getMessage (a, b) {
       return sum;
     }
     if (typeof (a) === 'boolean') {
-      var a = true
+    
       if (a) {
         return ('Я попал в b');
     } // если а true
