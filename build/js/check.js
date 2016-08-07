@@ -3,6 +3,7 @@
 function getMessage (a, b) {
     var numberOfSteps;
     var distancePath;
+
     function calculatePath (a, b) {
       var sum = 0;
       for (var i = 0; i < a.length; i++) {
@@ -20,7 +21,7 @@ function getMessage (a, b) {
     if (typeof (a) === 'boolean') {
 
       if (a) {
-        return ('Я попал в b');
+        return ('Я попал в' + b);
     } // если а true
       else  {
         return ('Я никуда не попал');
