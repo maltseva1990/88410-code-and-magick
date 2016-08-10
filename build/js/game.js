@@ -394,19 +394,76 @@ window.Game = (function() {
     /**
      * Отрисовка экрана паузы.
      */
+    showMessage: function(message, messageWidth) {
+      messageWidth = messageWidth || 200;
+      var words = message.split(' ');
+      var countWords = words.length;
+      var line = '';
+      var lineNumber = '';
+      var lineStorage = {};
+      var countLines = 0;
+      var fontSize = 16;
+      this.ctx.font = fontSize + 'px PT Mono';
+
+      for (var i = 0; i < countWords; i++) {
+        var currentLine = line + words[i];
+        var currentWidth = this.ctx.measureText(currentLine).width;
+        if (currentWidth > messageWidth) {
+          countLines++;
+          lineNumber = 'line' + countLines;
+          lineStorage[lineNumber] = line;
+          line = words[i] + ' ';
+        } else {
+          line = currentLine + ' ';
+        }
+      }
+      countLines++;
+      lineNumber = 'line' + countLines;
+      lineStorage[lineNumber] = line.slice(0, -2);
+
+      var lineSpacing = 1.5;
+      var bGroundPadding = 40;
+      var bGroundWidth = messageWidth + bGroundPadding;
+      var bGroundHeight = fontSize * lineSpacing * countLines + bGroundPadding;
+      var bGroundPosX = WIDTH / 2 - bGroundWidth / 2;
+      var bGroundPosY = HEIGHT / 2 - bGroundHeight / 2;
+      var textPosX = bGroundPosX + bGroundPadding / 2;
+      var textPosY = bGroundPosY + bGroundPadding / 2;
+
+      this.ctx.shadowOffsetX = 7;
+      this.ctx.shadowOffsetY = 7;
+      this.ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+      this.ctx.fillStyle = '#FFFFFF';
+      this.ctx.fillRect(bGroundPosX, bGroundPosY, bGroundWidth, bGroundHeight);
+
+      var count = 0;
+      for (var j = 1; j <= Object.keys(lineStorage).length; j++) {
+        this.ctx.shadowOffsetX = 0;
+        this.ctx.shadowOffsetY = 0;
+        this.ctx.textBaseline = 'hanging';
+        this.ctx.fillStyle = 'darkblue';
+        this.ctx.fillText(lineStorage['line' + j], textPosX, textPosY + (fontSize * lineSpacing * count));
+        count++;
+      }
+    },
+
     _drawPauseScreen: function() {
       switch (this.state.currentStatus) {
         case Verdict.WIN:
-          console.log('you have won!');
+
+          this.showMessage('You have won!', 150);
           break;
         case Verdict.FAIL:
-          console.log('you have failed!');
+
+          this.showMessage('You have failed!', 200);
           break;
+
         case Verdict.PAUSE:
-          console.log('game is on pause!');
+          this.showMessage('Game is on pause!', 200);
           break;
         case Verdict.INTRO:
-          console.log('welcome to the game! Press Space to start');
+
+          this.showMessage('Welcome to the game! You know what to do in order to start ', 200);
           break;
       }
     },
