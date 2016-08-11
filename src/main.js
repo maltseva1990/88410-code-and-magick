@@ -2,4 +2,4 @@
 
 require('./form.js');
 require('./game.js');
-require('./game-start.min.js');
+require('./game-stat.min.js');
